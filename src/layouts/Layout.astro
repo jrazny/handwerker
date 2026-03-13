@@ -1,0 +1,45 @@
+---
+import { config } from '@/lib/config';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { FloatingCTA } from '@/components/shared/FloatingCTA';
+import '@/styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = config.seo.title, description = config.seo.description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+    
+    <style is:global>
+      :root {
+        --font-sans: 'DM Sans', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-background text-foreground flex flex-col antialiased selection:bg-primary-lighter selection:text-primary">
+    <Header client:load />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+    <FloatingCTA client:load />
+  </body>
+</html>

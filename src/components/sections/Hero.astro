@@ -1,0 +1,62 @@
+---
+import { config } from '@/lib/config';
+import { Button } from '@/components/ui/button';
+import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
+import { heroReveal } from '@/lib/animations';
+import { Star, ShieldCheck, Siren, MapPin } from 'lucide-react';
+---
+
+<section className="relative w-full overflow-hidden bg-slate-900 pt-24 pb-32 lg:pt-32 lg:pb-40">
+  {/* Background Pattern / Img Placeholder */}
+  <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 bg-black/60 z-10"></div>
+    {/* In a real project, replace this with an optimized next/image / astro image */}
+    <div className="w-full h-full bg-slate-800 bg-[url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center"></div>
+  </div>
+
+  <div className="max-w-6xl mx-auto px-4 md:px-8 relative z-20">
+    <RevealOnScroll client:load variants={heroReveal} className="max-w-3xl">
+      {/* Badges */}
+      <div className="flex flex-wrap gap-3 mb-8">
+        <div className="inline-flex items-center gap-1.5 bg-accent/90 text-white px-3 py-1 text-sm font-semibold rounded-full backdrop-blur-sm">
+          <Star className="w-4 h-4 fill-current" />
+          <span>{config.socialProof.googleRating}/5 auf Google</span>
+        </div>
+        {config.company.region && (
+           <div className="inline-flex items-center gap-1.5 bg-white/10 text-white border border-white/20 px-3 py-1 text-sm font-medium rounded-full backdrop-blur-sm">
+            <MapPin className="w-4 h-4" />
+            <span>Regional in {config.company.region}</span>
+          </div>
+        )}
+      </div>
+
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
+        {config.hero.headline}
+      </h1>
+      
+      <p className="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed max-w-2xl">
+        {config.hero.subline}
+      </p>
+      
+      <div className="flex flex-col sm:flex-row gap-4">
+        <Button asChild size="lg" className="bg-accent hover:bg-accent-light text-white text-base h-14 px-8 rounded-md transition-colors w-full sm:w-auto">
+          <a href="/kontakt">{config.hero.cta_primary}</a>
+        </Button>
+        <Button asChild size="lg" variant="outline" className="border-2 border-white text-slate-900 bg-white hover:bg-slate-100 hover:text-slate-900 text-base h-14 px-8 rounded-md transition-colors w-full sm:w-auto">
+          <a href={`tel:${config.company.phoneEmergency}`}>{config.hero.cta_secondary}</a>
+        </Button>
+      </div>
+
+      <div className="mt-12 flex flex-col sm:flex-row gap-6 text-sm text-slate-300">
+        <div className="flex items-center gap-2">
+          <ShieldCheck className="w-5 h-5 text-accent" />
+          <span>Ausgebildete Fachkräfte</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Siren className="w-5 h-5 text-accent" />
+          <span>24/7 Notdienstbereitschaft</span>
+        </div>
+      </div>
+    </RevealOnScroll>
+  </div>
+</section>

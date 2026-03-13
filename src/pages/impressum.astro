@@ -1,0 +1,65 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { config } from '@/lib/config';
+---
+
+<Layout title={`Impressum | ${config.company.name}`} description="Impressum und rechtliche Angaben">
+  <div class="bg-primary text-white py-12 px-4 border-b-4 border-accent">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Impressum</h1>
+    </div>
+  </div>
+
+  <div class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 prose prose-slate">
+      <p class="text-red-600 font-bold bg-red-50 p-4 rounded-sm border border-red-200">
+        Hinweis: Platzhalter – bitte von einem Rechtsanwalt prüfen und anpassen lassen.
+      </p>
+
+      <h2>Angaben gemäß § 5 TMG</h2>
+      <p>
+        <strong>{config.company.name}</strong><br />
+        Vertreten durch: {config.company.owner}<br />
+        {config.company.address.street}<br />
+        {config.company.address.zip} {config.company.address.city}
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: {config.company.phone}<br />
+        E-Mail: {config.company.email}
+      </p>
+
+      <h2>Umsatzsteuer-ID</h2>
+      <p>
+        Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
+        DE XXX XXX XXX
+      </p>
+
+      <h2>Aufsichtsbehörde / Kammer</h2>
+      <p>
+        Eingetragen bei der Handwerkskammer Köln.<br />
+        Betriebsnummer: XXXX
+      </p>
+
+      <h2>Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+      <p>
+        Berufsbezeichnung: Meisterbetrieb für Sanitär-, Heizungs- und Klimatechnik<br />
+        Verliehen in: Bundesrepublik Deutschland<br />
+        Zuständige Kammer: Handwerkskammer Köln<br />
+        Es gelten folgende berufsrechtliche Regelungen: Handwerksordnung (HwO), einsehbar unter: <a href="https://www.gesetze-im-internet.de/hwo/" target="_blank" rel="noopener noreferrer">https://www.gesetze-im-internet.de/hwo/</a>
+      </p>
+
+      <h2>EU-Streitschlichtung</h2>
+      <p>
+        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br />
+        Unsere E-Mail-Adresse finden Sie oben im Impressum.
+      </p>
+
+      <h2>Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
+      <p>
+        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+      </p>
+    </div>
+  </div>
+</Layout>

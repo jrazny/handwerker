@@ -1,0 +1,33 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import TrustBar from '@/components/sections/TrustBar.astro';
+import ServicesGrid from '@/components/sections/ServicesGrid.astro';
+import AboutTeaser from '@/components/sections/AboutTeaser.astro';
+import LeadMagnet from '@/components/sections/LeadMagnet.astro';
+import Testimonials from '@/components/sections/Testimonials.astro';
+import AreaMap from '@/components/sections/AreaMap.astro';
+import FAQ from '@/components/sections/FAQ.astro';
+import CTABanner from '@/components/sections/CTABanner.astro';
+import { config } from '@/lib/config';
+---
+
+<Layout title={config.seo.title} description={config.seo.description}>
+  <Hero />
+  <TrustBar />
+  <ServicesGrid />
+  <AboutTeaser />
+  
+  {config.features.leadMagnet !== 'none' && (
+    <LeadMagnet />
+  )}
+  
+  <Testimonials />
+  <AreaMap />
+  
+  {config.features.faq && (
+    <FAQ />
+  )}
+  
+  <CTABanner />
+</Layout>

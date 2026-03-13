@@ -1,0 +1,51 @@
+---
+import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
+import { Card, CardContent } from '@/components/ui/card';
+import { fadeUp, stagger } from '@/lib/animations';
+import { config } from '@/lib/config';
+import { Star } from 'lucide-react';
+---
+
+<section class="py-16 md:py-24 bg-white border-t border-slate-100" id="bewertungen">
+  <div class="max-w-6xl mx-auto px-4 md:px-8">
+    <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6">
+      <RevealOnScroll client:load variants={fadeUp}>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">Was unsere Kunden sagen</h2>
+        <div class="flex items-center gap-3">
+          <div class="flex items-center text-accent">
+            <Star class="w-6 h-6 fill-current" />
+            <Star class="w-6 h-6 fill-current" />
+            <Star class="w-6 h-6 fill-current" />
+            <Star class="w-6 h-6 fill-current" />
+            <Star class="w-6 h-6 fill-current" />
+          </div>
+          <span class="text-xl font-bold !translate-y-px">{config.socialProof.googleRating}</span>
+          <span class="text-slate-500 font-medium">von 5 Sternen ({config.socialProof.googleReviewCount} Bewertungen) auf Google</span>
+        </div>
+      </RevealOnScroll>
+    </div>
+
+    <RevealOnScroll client:load variants={stagger}>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {config.testimonials.slice(0, 3).map((testimonial) => (
+          <RevealOnScroll client:load variants={fadeUp} className="h-full">
+            <Card className="h-full bg-slate-50 border border-slate-200 rounded-sm shadow-sm flex flex-col p-6">
+              <div class="flex items-center gap-1 text-accent mb-4">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star class={`w-4 h-4 ${i < testimonial.sterne ? 'fill-current' : 'text-slate-300'}`} />
+                ))}
+              </div>
+              <CardContent className="p-0 flex-grow flex flex-col">
+                <p class="text-slate-700 italic leading-relaxed mb-6 flex-grow">"{testimonial.text}"</p>
+                <div class="mt-auto">
+                  <p class="font-bold text-slate-900">{testimonial.name}</p>
+                  <p class="text-sm text-slate-500">{testimonial.ort} &middot; {testimonial.datum}</p>
+                </div>
+              </CardContent>
+            </Card>
+          </RevealOnScroll>
+        ))}
+      </div>
+    </RevealOnScroll>
+  </div>
+</section>

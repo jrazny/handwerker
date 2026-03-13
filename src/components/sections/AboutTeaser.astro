@@ -1,0 +1,66 @@
+---
+import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
+import { fadeLeft, fadeRight } from '@/lib/animations';
+import { Button } from '@/components/ui/button';
+import { config } from '@/lib/config';
+import { CheckCircle2 } from 'lucide-react';
+---
+
+<section class="py-16 md:py-24 bg-slate-50 overflow-hidden" id="ueber-uns">
+  <div class="max-w-6xl mx-auto px-4 md:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+      
+      {/* Text Links */}
+      <RevealOnScroll client:load variants={fadeLeft}>
+        <div class="space-y-6">
+          <div class="inline-flex items-center gap-2 bg-primary-lighter text-primary px-3 py-1 font-semibold text-sm rounded-full">
+            <span>Meisterbetrieb seit {config.company.foundedYear}</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
+            Wir sind {config.company.name} – Ihr Partner in der Region.
+          </h2>
+          <p class="text-lg text-slate-600 leading-relaxed">
+            Als familiengeführter Meisterbetrieb legen wir größten Wert auf Qualität, Pünktlichkeit und ehrliche Beratung. Ob kleines Reparaturanliegen oder große Sanierung: Wir behandeln jedes Projekt mit der gleichen handwerklichen Sorgfalt.
+          </p>
+          
+          <ul class="space-y-3 pt-2 pb-4 text-slate-700">
+            <li class="flex items-center gap-3">
+              <CheckCircle2 class="w-5 h-5 text-accent flex-shrink-0" />
+              <span class="font-medium">Eingetragener Innungsfachbetrieb</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <CheckCircle2 class="w-5 h-5 text-accent flex-shrink-0" />
+              <span class="font-medium">Regelmäßig geschulte Festangestellte</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <CheckCircle2 class="w-5 h-5 text-accent flex-shrink-0" />
+              <span class="font-medium">Transparente Festpreisangebote</span>
+            </li>
+          </ul>
+
+          <Button asChild size="lg" className="bg-primary hover:bg-primary-light text-white rounded-md mt-2">
+            <a href="/kontakt">Lernen Sie uns kennen &rarr;</a>
+          </Button>
+        </div>
+      </RevealOnScroll>
+
+      {/* Bild Rechts */}
+      <RevealOnScroll client:load variants={fadeRight}>
+        <div class="relative w-full aspect-square md:aspect-[4/5] bg-slate-200 rounded-sm">
+          {/* Bild-Platzhalter */}
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-slate-400 border-2 border-dashed border-slate-300 rounded-sm bg-slate-100 p-8 text-center">
+            <span class="font-semibold text-lg text-slate-500 mb-2">Teamfoto Platzhalter</span>
+            <span class="text-sm">Idealmaß: 800x1000px. Bild von Inhaber oder Team bei der Arbeit.</span>
+          </div>
+          
+          {/* Floating Badge */}
+          <div class="absolute -bottom-6 -left-6 bg-white p-6 shadow-xl border border-slate-100 rounded-sm hidden sm:block max-w-[200px]">
+            <div class="font-mono text-4xl font-bold text-primary mb-1">{config.socialProof.yearsExperience}</div>
+            <div class="text-sm font-medium text-slate-600 leading-snug">Jahre Handwerkserfahrung</div>
+          </div>
+        </div>
+      </RevealOnScroll>
+
+    </div>
+  </div>
+</section>

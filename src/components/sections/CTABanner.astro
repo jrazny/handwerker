@@ -1,0 +1,29 @@
+---
+import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
+import { fadeUp } from '@/lib/animations';
+import { config } from '@/lib/config';
+import { Button } from '@/components/ui/button';
+import { Phone } from 'lucide-react';
+---
+
+<section class="py-16 md:py-24 bg-primary text-white text-center">
+  <div class="max-w-4xl mx-auto px-4 md:px-8">
+    <RevealOnScroll client:load variants={fadeUp}>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">Bereit für Ihr Projekt?</h2>
+      <p class="text-lg md:text-xl text-primary-lighter mb-10 leading-relaxed max-w-2xl mx-auto">
+        Kontaktieren Sie uns für eine unverbindliche Beratung. Wir freuen uns darauf, Ihre Wünsche handwerklich perfekt umzusetzen.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <Button asChild size="lg" className="bg-accent hover:bg-accent-light text-white font-medium h-14 px-8 rounded-md w-full sm:w-auto">
+          <a href="/kontakt">Jetzt Angebot anfragen</a>
+        </Button>
+        <Button asChild size="lg" variant="outline" className="border-2 border-white/20 bg-white/10 hover:bg-white hover:text-primary text-white font-medium h-14 px-8 rounded-md w-full sm:w-auto">
+          <a href={`tel:${config.company.phone}`} className="flex items-center gap-2">
+            <Phone class="w-5 h-5" />
+            <span>{config.company.phone} anrufen</span>
+          </a>
+        </Button>
+      </div>
+    </RevealOnScroll>
+  </div>
+</section>

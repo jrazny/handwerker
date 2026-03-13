@@ -1,0 +1,30 @@
+---
+import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
+import { fadeUp } from '@/lib/animations';
+import { config } from '@/lib/config';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
+---
+
+<section class="py-16 md:py-24 bg-white" id="faq">
+  <div class="max-w-3xl mx-auto px-4 md:px-8">
+    <RevealOnScroll client:load variants={fadeUp} className="mb-10 text-center md:text-left">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">Häufig gestellte Fragen</h2>
+      <p class="text-lg text-slate-600 leading-relaxed">Antworten auf die wichtigsten Fragen rund um unsere Leistungen und Abläufe.</p>
+    </RevealOnScroll>
+
+    <RevealOnScroll client:load variants={fadeUp}>
+      <Accordion type="single" collapsible className="w-full" client:load>
+        {config.faqs.map((faq, index) => (
+          <AccordionItem value={`item-${index}`} className="border-b border-slate-200 py-2">
+            <AccordionTrigger className="text-left font-bold text-slate-900 hover:text-primary transition-colors hover:no-underline">
+              {faq.frage}
+            </AccordionTrigger>
+            <AccordionContent className="text-slate-600 leading-relaxed pt-2 pb-4">
+              {faq.antwort}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </RevealOnScroll>
+  </div>
+</section>

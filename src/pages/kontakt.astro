@@ -1,0 +1,87 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { ContactForm } from '@/components/forms/ContactForm';
+import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
+import { fadeUp, fadeLeft, fadeRight } from '@/lib/animations';
+import { config } from '@/lib/config';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+---
+
+<Layout title={`Kontakt | ${config.company.name}`} description={`Nehmen Sie Kontakt mit ${config.company.name} auf. Wir sind 24/7 für Sie erreichbar.`}>
+  {/* Mini Hero */}
+  <section class="bg-primary text-white py-16 px-4 md:px-8 border-b-4 border-accent">
+    <div class="max-w-4xl mx-auto text-center">
+      <RevealOnScroll client:load variants={fadeUp}>
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Kontakt</h1>
+        <p class="text-xl text-primary-lighter max-w-2xl mx-auto leading-relaxed">Wir freuen uns auf Ihre Projektanfrage oder Rückfragen.</p>
+      </RevealOnScroll>
+    </div>
+  </section>
+
+  <div class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 md:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+        
+        {/* Contact Info */}
+        <div class="lg:col-span-4 space-y-10">
+          <RevealOnScroll client:load variants={fadeLeft}>
+            <h2 class="text-2xl font-bold tracking-tight text-slate-900 mb-6">Direkter Kontakt</h2>
+            
+            <div class="space-y-6">
+              <div class="flex items-start gap-4 text-slate-700">
+                <MapPin class="w-6 h-6 text-accent shrink-0 mt-0.5" />
+                <div>
+                  <strong class="block text-slate-900 mb-1">Standort</strong>
+                  {config.company.address.street}<br />
+                  {config.company.address.zip} {config.company.address.city}
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-4 text-slate-700">
+                <Phone class="w-6 h-6 text-accent shrink-0 mt-0.5" />
+                <div>
+                  <strong class="block text-slate-900 mb-1">Telefon</strong>
+                  <a href={`tel:${config.company.phone}`} class="hover:text-primary transition-colors block mb-1">{config.company.phone}</a>
+                  <span class="text-sm text-slate-500">Notdienst: <a href={`tel:${config.company.phoneEmergency}`} class="text-accent hover:underline">{config.company.phoneEmergency}</a></span>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-4 text-slate-700">
+                <Mail class="w-6 h-6 text-accent shrink-0 mt-0.5" />
+                <div>
+                  <strong class="block text-slate-900 mb-1">E-Mail</strong>
+                  <a href={`mailto:${config.company.email}`} class="hover:text-primary transition-colors">{config.company.email}</a>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-4 text-slate-700">
+                <Clock class="w-6 h-6 text-accent shrink-0 mt-0.5" />
+                <div>
+                  <strong class="block text-slate-900 mb-1">Öffnungszeiten</strong>
+                  <div class="whitespace-pre-line text-sm leading-relaxed space-y-1">
+                    <div>{config.company.openingHours.weekdays}</div>
+                    <div>{config.company.openingHours.saturday}</div>
+                    <div class="font-semibold text-accent mt-2">{config.company.openingHours.emergency}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </RevealOnScroll>
+        </div>
+
+        {/* Contact Form */}
+        <div class="lg:col-span-8">
+          <RevealOnScroll client:load variants={fadeRight}>
+            <div class="bg-slate-50 border border-slate-200 p-6 md:p-8 rounded-sm">
+              <h2 class="text-2xl font-bold tracking-tight text-slate-900 mb-2">Schreiben Sie uns</h2>
+              <p class="text-slate-600 mb-8 leading-relaxed">Füllen Sie das Formular aus, und wir melden uns zeitnah bei Ihnen. Bei dringenden Notfällen nutzen Sie bitte unsere Notdienst-Nummer.</p>
+              
+              <ContactForm client:load />
+            </div>
+          </RevealOnScroll>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</Layout>

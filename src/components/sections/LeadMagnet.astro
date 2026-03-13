@@ -1,0 +1,48 @@
+---
+import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
+import { fadeUp } from '@/lib/animations';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { FileText } from 'lucide-react';
+---
+
+<section class="py-20 md:py-28 bg-primary text-white relative overflow-hidden">
+  {/* Dezenter Hintergrund-Muster oder Gradient */}
+  <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary to-slate-900 pointer-events-none"></div>
+
+  <div class="max-w-4xl mx-auto px-4 md:px-8 relative z-10 text-center">
+    <RevealOnScroll client:load variants={fadeUp}>
+      <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/10 mb-8 backdrop-blur-sm">
+        <FileText class="w-8 h-8 text-accent-light" />
+      </div>
+      
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6">Gratis Heizungs-Check</h2>
+      <p class="text-lg md:text-xl text-primary-lighter mb-10 max-w-2xl mx-auto leading-relaxed">
+        Laden Sie unsere exklusive Checkliste herunter. 10 Punkte, die Sie jetzt prüfen sollten – und bares Geld sparen. Finden Sie in 5 Minuten heraus, ob Ihre Heizung noch effizient arbeitet.
+      </p>
+
+      {/* Formular für den Lead Magnet */}
+      <form class="max-w-md mx-auto space-y-4">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <Input 
+            type="email" 
+            placeholder="Ihre E-Mail Adresse" 
+            required 
+            aria-label="E-Mail Adresse"
+            className="h-12 bg-white/10 border-white/20 text-white placeholder:text-slate-300 focus-visible:ring-accent-light rounded-md"
+          />
+          <Button 
+            type="submit" 
+            size="lg" 
+            className="h-12 bg-accent hover:bg-accent-light text-white font-medium px-8 w-full sm:w-auto rounded-md"
+          >
+            Checkliste anfordern
+          </Button>
+        </div>
+        <p class="text-xs text-white/60 pt-2 text-left">
+          Ihre Daten sind sicher. Wir senden Ihnen keinen Spam.
+        </p>
+      </form>
+    </RevealOnScroll>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { config } from '@/lib/config';
+---
+
+<Layout title={`AGB | ${config.company.name}`} description="Allgemeine Geschäftsbedingungen">
+  <div class="bg-primary text-white py-12 px-4 border-b-4 border-accent">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Allgemeine Geschäftsbedingungen</h1>
+    </div>
+  </div>
+
+  <div class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 prose prose-slate">
+      <p class="text-red-600 font-bold bg-red-50 p-4 rounded-sm border border-red-200">
+        Hinweis: Muster-AGB für Handwerker. Bitte durch einen Rechtsanwalt auf Vollständigkeit prüfen lassen.
+      </p>
+
+      <h2>§ 1 Geltungsbereich</h2>
+      <p>(1) Die nachstehenden Bedingungen gelten für alle zwischen dem Meisterbetrieb {config.company.name} und seinen Auftraggebern geschlossenen Verträge. Abweichende Bedingungen des Auftraggebers binden den Auftragnehmer nicht, es sei denn, sie werden ausdrücklich schriftlich anerkannt.</p>
+      
+      <h2>§ 2 Angebot und Vertragsschluss</h2>
+      <p>(1) Angebote des Auftragnehmers sind, sofern nichts anderes vereinbart ist, für 30 Tage bindend. Der Vertrag kommt mit der beiderseitigen Unterzeichnung oder mit der Auftragsbestätigung durch uns zustande.</p>
+      
+      <h2>§ 3 Preise und Zahlungsbedingungen</h2>
+      <p>(1) Maßgeblich sind die im Angebot genannten bzw. die vereinbarten Preise. Sofern keine Festpreise vereinbart wurden, erfolgt die Abrechnung nach Aufwand.</p>
+      <p>(2) Rechnungen sind ohne Abzug innerhalb von 14 Tagen nach Rechnungsdatum zahlbar, sofern nicht anders vereinbart.</p>
+
+      <h2>§ 4 Ausführungshinweise & Verzögerungen</h2>
+      <p>(1) Liefer- und Ausführungsfristen sind Richtwerte, es sei denn, es wird ausdrücklich ein Fixtermin vereinbart.</p>
+      <p>(2) Bei durch höhere Gewalt, Materialengpässe oder unverschuldete Vorkommnisse bedingten Bauverzögerungen verlängert sich eine eventuell vereinbarte Ausführungsfrist angemessen.</p>
+
+      <h2>§ 5 Gewährleistung</h2>
+      <p>(1) Es gelten die gesetzlichen Gewährleistungsfristen nach BGB / VOB.</p>
+
+      <h2>§ 6 Gerichtsstand</h2>
+      <p>(1) Für sämtliche Streitigkeiten aus dem Vertrag gilt der Gerichtsstand am Sitz von {config.company.name} ({config.company.address.city}), sofern der Auftraggeber Kaufmann oder eine juristische Person des öffentlichen Rechts ist.</p>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,27 @@
+---
+import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
+import { counterReveal } from '@/lib/animations';
+import { config } from '@/lib/config';
+
+const metrics = [
+  { label: 'Jahre Erfahrung', value: `>${config.socialProof.yearsExperience}` },
+  { label: 'Projekte', value: `>${config.socialProof.completedProjects}` },
+  { label: 'Sterne auf Google', value: `${config.socialProof.googleRating}` },
+  { label: 'Notdienst-Anfahrt', value: `<${config.socialProof.emergencyResponseMinutes}m` },
+];
+---
+
+<div className="bg-primary text-white py-6 border-b border-white/10">
+  <div className="max-w-6xl mx-auto px-4 md:px-8">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x divide-white/10">
+      {metrics.map((m, i) => (
+        <RevealOnScroll client:load variants={counterReveal} delay={i * 0.1}>
+          <div>
+            <span className="font-mono text-3xl font-bold tracking-tight text-accent-lighter block mb-1">{m.value}</span>
+            <span className="block text-sm text-primary-lighter font-medium">{m.label}</span>
+          </div>
+        </RevealOnScroll>
+      ))}
+    </div>
+  </div>
+</div>
