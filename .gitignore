@@ -25,3 +25,8 @@ dist-ssr
 
 # Astro
 .astro/
+
+# Project specific
+AGENTS.md
+CLAUDE.md
+docs/
