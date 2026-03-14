@@ -7,7 +7,7 @@ import cloudflare from '@astrojs/cloudflare';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://beispiel-handwerker.de',
-  output: 'hybrid',
+  output: 'static',
   adapter: cloudflare(),
   integrations: [react(), sitemap()],
   vite: {
